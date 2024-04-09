@@ -1,0 +1,103 @@
+html{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background:url('/Assets/BG.svg') no-repeat;
+    background-size: cover;
+    font-family: "Baloo Da 2", sans-serif;
+    font-optical-sizing: auto;
+    position: relative;
+}
+
+#scoreContainer{
+    text-align: center;
+    font-weight: 700;
+    color: #674E28;
+
+    h1{
+        font-size: 64px;
+        margin: 0;
+        margin-top: 100px;
+    }
+
+    #Score{
+        font-size: 128px;
+        margin: 0;
+        line-height: 100px;
+    }
+
+    #GameOver{
+        color: #C93B3B;
+        font-size: 128px;
+        display: none;
+        margin: 0;
+    }
+}
+
+#moleContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center ;
+    gap: 5%;
+    margin-top: 15%;
+
+    div{
+        width: 321.27px;
+        height: 400px;
+        position: relative;
+    }
+
+    img{
+        transition: all ease-in-out 0.2s;
+        position: absolute;
+        bottom: 0;
+        z-index: 0;
+    }
+}
+
+#MoleD{
+    left: 0;
+    right: 0;
+    top: -100px;
+    margin: auto;
+}
+#MoleF{
+    left: 0;
+    right: 0;
+    top: -100px;
+    margin: auto;
+}
+#MoleJ{
+    left: 0;
+    right: 0;
+    top: -100px;
+    margin: auto;
+}
+#MoleK{
+    left: 0;
+    right: 0;
+    top: -100px;
+    margin: auto;
+}
+
+.moleUp{
+    opacity: 1;
+}
+
+.moleDown{
+    opacity: 0;
+}
+
+#restartBut{
+    position: absolute;
+    top:50px;
+    right: 50px;
+    transition: all ease-in-out 0.3s;
+}
+
+#restartBut:hover{
+    transform: scale(90%);
+    cursor: pointer;
+}

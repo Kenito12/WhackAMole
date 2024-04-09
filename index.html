@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400..800&display=swap" rel="stylesheet">
+    <title>🔨Whack a Mole🔨</title>
+</head>
+<body>
+
+    <img src="Assets/RestartIcon.svg" alt="RestartIcon" id="restartBut">
+
+    <!-- Score Counter -->
+    <div id="scoreContainer">
+
+        <h1 id="GameOver">Game Over</h1>
+        <h1 id="scoreTitle">Score</h1>
+        <h1 id="Score">0</h1>
+    </div>
+    
+
+    <!-- Mole -->
+    <div id="moleContainer">
+        <div class="mole">
+            <img src="Assets/Dirt_D.svg" alt="Dirt_D">
+            <img src="Assets/Mole_D.svg" alt="Mole_D" id="MoleD">
+        </div>
+        
+        <div class="mole">
+            <img src="Assets/Dirt_F.svg" alt="Dirt_F">
+            <img src="Assets/Mole_F.svg" alt="Mole_F" id="MoleF">
+        </div>
+        
+        <div class="mole">
+            <img src="Assets/Dirt_J.svg" alt="Dirt_J">
+            <img src="Assets/Mole_J.svg" alt="Mole_J" id="MoleJ">
+        </div>
+        
+        <div class="mole">
+            <img src="Assets/Dirt_K.svg" alt="Dirt_K">
+            <img src="Assets/Mole_K.svg" alt="Mole_K" id="MoleK">
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+<script src="script.js"></script>
+</html>

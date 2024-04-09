@@ -1,219 +1,188 @@
 //How should I create a condition for whack a mole game in code?
+//Change the layout of the game 
+//Add life point and fail condition
 
 let rannum;
 let previousNum;
 let score = 0;
+let lp = 3;
+let fail;
+let counter;
 
-// declare variable to handle the color of of each circle by Object
-let up = {
-  red: 255,
-  green: 255,
-  blue: 255
+// Hit sfx and Miss sfx
+let hitfx;
+let missfx;
+
+
+//Moles D F J K
+const MoleD = document.getElementById("MoleD")
+const MoleF = document.getElementById("MoleF")
+const MoleJ = document.getElementById("MoleJ")
+const MoleK = document.getElementById("MoleK")
+
+//ScoreCounter
+const scoreCounter = document.getElementById("Score")
+const scoreTitle = document.getElementById("scoreTitle")
+const overText =  document.getElementById("GameOver")
+
+//restart button
+const restartBut = document.getElementById("restartBut")
+//restart game when click
+restartBut.onclick = () => {
+  lp = 3
+  fail = false
+  score = 0
+  randomized()
+  overText.style.display = 'none'
+  scoreTitle.style.display = "block"
+  clearTimeout(counter);
+  timer()
 }
 
-let down = {
-  red: 255,
-  green: 255,
-  blue: 255
-}
 
-let left = {
-  red: 255,
-  green: 255,
-  blue: 255
-}
-
-let right = {
-  red: 255,
-  green: 255,
-  blue: 255
-}
 
 setup = () => {
-    createCanvas (windowWidth, windowHeight);
-    //Create a button to start the game
-    let button = createButton('start');
-    button.position(windowWidth/2, windowHeight/2);
-    
-    let restartBut = createButton('restart')
-    restartBut.position(windowWidth/2, windowHeight/2 + 50)
-    restartBut.hide()
-    
-    //run randomized function and hide the button after hide;
-    button.mousePressed(() => {
-      randomized()
-      button.hide()
-      restartBut.show()
-      
-    })
-    
-    restartBut.mousePressed(() =>{
-      randomized()
-      score = 0
-    })
+
+  // load sound through p5.js sound
+  hitfx = loadSound('Assets/Audio/Hammer_Hit.mp3');
+  missfx = loadSound('Assets/Audio/Hammer_Miss.mp3');
+
+  //change the voluem of the sound
+  hitfx.amp(0.5);
+  missfx.amp(0.5);
+  randomized()
+  timer()
   }
   
   draw = () => {
-    background(255)
-    // UP
-    fill(up.red,up.green,up.blue)
-    noStroke()
-    circle(windowWidth/2, windowHeight/2 - 400, 200)
-    
-    // Down
-    fill(down.red,down.green,down.blue)
-    noStroke()
-    circle(windowWidth/2, windowHeight/2 - 150, 200)
-    
-    // Right
-    fill(right.red,right.green,right.blue)
-    noStroke()
-    circle(windowWidth/2 + 250, windowHeight/2 - 150, 200)
-    
-    // Left
-    fill(left.red,left.green,left.blue)
-    noStroke()
-    circle(windowWidth/2 - 250, windowHeight/2 - 150, 200)
 
-    textSize(22);
-    fill('red');
-    text(score, windowWidth/2, windowHeight/2 + 100);
+    scoreCounter.innerHTML = score;
+
+    if(lp == 0 || score < 0)
+    {
+      overText.style.display = "block"
+      scoreTitle.style.display = "none"
+      fail = true
+    }
+
 
   }
-
-let randomized = () => {
-
-  // Math.round use to round up the decimal to a round number
-  rannum = Math.round(random(1, 4))
   
-  //if else condition to prevent the randomizer to random a the same number
-  if (previousNum == rannum){
-    if(rannum == 1){
-      rannum += 1
-      previousNum = rannum
+  let randomized = () => {
+  if(fail){
+    console.log("gamestop")
+  }
+  else{
+    
+    // Math.round use to round up the decimal to a round number
+    rannum = Math.round(random(1, 4))
+    
+    //if else condition to prevent the randomizer to random a the same number
+    if (previousNum == rannum){
+      if(rannum == 1){
+        rannum += 1
+        previousNum = rannum
+      }
+      else{
+        rannum -= 1
+        previousNum = rannum
+      }
+      console.log(rannum)
     }
     else{
-      rannum -= 1
+      console.log(rannum)
       previousNum = rannum
     }
-    console.log(rannum)
-}
-else{
-    console.log(rannum)
-    previousNum = rannum
-}
-
-  //switch condition to change the color of each circle 
-  switch(rannum){
-    case 1:
-      up.red = 0
-      up.green = 255
-      up.blue = 0
-
-      down.red = 255
-      down.green = 0
-      down.blue = 0
-
-      left.red = 255
-      left.green = 0
-      left.blue = 0
-
-      right.red = 255
-      right.green = 0
-      right.blue = 0
-      break;
-    case 2:
-      up.red = 255
-      up.green = 0
-      up.blue = 0
-
-      down.red = 0
-      down.green = 255
-      down.blue = 0
-
-      left.red = 255
-      left.green = 0
-      left.blue = 0
-
-      right.red = 255
-      right.green = 0
-      right.blue = 0
-      break;
-    case 3:
-      up.red = 255
-      up.green = 0
-      up.blue = 0
-
-      down.red = 255
-      down.green = 0
-      down.blue = 0
-
-      left.red = 0
-      left.green = 255
-      left.blue = 0
-
-      right.red = 255
-      right.green = 0
-      right.blue = 0
-      break;
-    case 4:
-      up.red = 255
-      up.green = 0
-      up.blue = 0
-
-      down.red = 255
-      down.green = 0
-      down.blue = 0
-
-      left.red = 255
-      left.green = 0
-      left.blue = 0
-
-      right.red = 0
-      right.green = 255
-      right.blue = 0
-      break;
+  
+    //switch condition to change appearance of the Moles
+    switch(rannum){
+      case 1:
+        MoleD.className = "moleUp";
+        MoleF.className = "moleDown";
+        MoleJ.className = "moleDown";
+        MoleK.className = "moleDown";
+        break;
+      case 2:
+        MoleD.className = "moleDown";
+        MoleF.className = "moleUp";
+        MoleJ.className = "moleDown";
+        MoleK.className = "moleDown";
+        break;
+      case 3:
+        MoleD.className = "moleDown";
+        MoleF.className = "moleDown";
+        MoleJ.className = "moleUp";
+        MoleK.className = "moleDown";
+        break;
+      case 4:
+        MoleD.className = "moleDown";
+        MoleF.className = "moleDown";
+        MoleJ.className = "moleDown";
+        MoleK.className = "moleUp";
+        break;
+    }
   }
-}
-
-keyPressed = () => {
-  switch (keyCode) {
-    case UP_ARROW:
-      rannumCheck(keyCode)
-    break;
-    case DOWN_ARROW:
-      rannumCheck(keyCode)
-    break;
-    case LEFT_ARROW:
-      rannumCheck(keyCode)
-    break;
-    case RIGHT_ARROW:
-      rannumCheck(keyCode)
-    break;
+  
+  keyPressed = () => {
+    switch (keyCode) {
+      case 68:
+        rannumCheck(keyCode)
+      break;
+      case 70:
+        rannumCheck(keyCode)
+      break;
+      case 74:
+        rannumCheck(keyCode)
+      break;
+      case 75:
+        rannumCheck(keyCode)
+      break;
+    }
   }
-
 }
 
 
 //check random number and compare with with keypress if correct increase score 
 //and continue random if not decrease score and random again
 let rannumCheck = (keyCode) =>{
-  if (rannum == 1 && keyCode === UP_ARROW){
-    score += 1
-  }
-  else if (rannum == 2 && keyCode === DOWN_ARROW){
-    score += 1
-  }
-  else if( rannum == 3 && keyCode === LEFT_ARROW){
-    score +=1
-  }
-  else if( rannum == 4 && keyCode === RIGHT_ARROW){
-    score +=1
+
+
+  if(fail){
+    console.log('stop')
   }
   else{
-    score -= 1
+    if (rannum == 1 && keyCode === 68){
+      score += 1
+      hitfx.play();
+    }
+    else if (rannum == 2 && keyCode === 70){
+      score += 1
+      hitfx.play();
+    }
+    else if( rannum == 3 && keyCode === 74){
+      score +=1
+      hitfx.play();
+    }
+    else if( rannum == 4 && keyCode === 75){
+      score +=1
+      hitfx.play();
+    }
+    else{
+      score -= 1
+      lp -= 1
+      missfx.play();
+    }
+  
+    randomized()
+  
   }
+}
 
-  randomized()
-
+//Timer for the game if the time ranout will show game over text and hide scoretitle
+let timer = () => {
+  counter = setTimeout(() => {
+    overText.style.display = "block"
+    scoreTitle.style.display = "none"
+    fail= true
+  }, 10000)
 }
