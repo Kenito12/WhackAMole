@@ -41,11 +41,11 @@ body{
     flex-direction: row;
     justify-content: center ;
     gap: 5%;
-    margin-top: 15%;
+    margin-top: 22%;
 
     div{
         width: 321.27px;
-        height: 400px;
+        height: auto;
         position: relative;
     }
 
@@ -60,25 +60,25 @@ body{
 #MoleD{
     left: 0;
     right: 0;
-    top: -100px;
+    top: -500px;
     margin: auto;
 }
 #MoleF{
     left: 0;
     right: 0;
-    top: -100px;
+    top: -500px;
     margin: auto;
 }
 #MoleJ{
     left: 0;
     right: 0;
-    top: -100px;
+    top: -500px;
     margin: auto;
 }
 #MoleK{
     left: 0;
     right: 0;
-    top: -100px;
+    top: -500px;
     margin: auto;
 }
 

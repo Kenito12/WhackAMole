@@ -56,8 +56,12 @@ setup = () => {
   
   draw = () => {
 
+    //update the score counter when the score go up or down
     scoreCounter.innerHTML = score;
 
+
+    // Condiion to check life point and score
+    // if life point = to 0 end the game or if score is lower than 0 end the game
     if(lp == 0 || score < 0)
     {
       overText.style.display = "block"
@@ -94,7 +98,7 @@ setup = () => {
       previousNum = rannum
     }
   
-    //switch condition to change appearance of the Moles
+    //switch condition to change the location of the Mole
     switch(rannum){
       case 1:
         MoleD.className = "moleUp";
@@ -163,23 +167,23 @@ let rannumCheck = (keyCode) =>{
     console.log('stop')
   }
   else{
-    if (rannum == 1 && keyCode === 68 || rannum == 1 && keyCode == 38){//d up
+    if (rannum == 1 && keyCode === 68 || rannum == 1 && keyCode == 38){// accept both D and up Arrow key
       score += 1
       hitfx.play();
     }
-    else if (rannum == 2 && keyCode === 70 || rannum == 2 && keyCode == 37){ //f left
+    else if (rannum == 2 && keyCode === 70 || rannum == 2 && keyCode == 37){ //accept both F and left arrow key
       score += 1
       hitfx.play();
     }
-    else if( rannum == 3 && keyCode === 74 || rannum == 3 && keyCode == 39){//j right
+    else if( rannum == 3 && keyCode === 74 || rannum == 3 && keyCode == 39){//accept both J and right arrow key
       score +=1
       hitfx.play();
     }
-    else if( rannum == 4 && keyCode === 75 || rannum == 4 && keyCode == 40){//k down
+    else if( rannum == 4 && keyCode === 75 || rannum == 4 && keyCode == 40){//accept both K and down arrow key.
       score +=1
       hitfx.play();
     }
-    else{
+    else{//if player press a wrong button decrease the score, life point, and play missFx
       score -= 1
       lp -= 1
       missfx.play();
@@ -191,6 +195,7 @@ let rannumCheck = (keyCode) =>{
 }
 
 //Timer for the game if the time ranout will show game over text and hide scoretitle
+//Time limit rn is 10 sec
 let timer = () => {
   counter = setTimeout(() => {
     overText.style.display = "block"
