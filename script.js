@@ -69,7 +69,7 @@ setup = () => {
   }
   
   let randomized = () => {
-  if(fail){
+  if(fail){//check if the state of the game is fail, if it is stop the game if not keep running
     console.log("gamestop")
   }
   else{
@@ -137,13 +137,25 @@ setup = () => {
       case 75:
         rannumCheck(keyCode)
       break;
+      case 38:
+        rannumCheck(keyCode)
+      break;
+      case 37:
+        rannumCheck(keyCode)
+      break;
+      case 39:
+        rannumCheck(keyCode)
+      break;
+      case 40:
+        rannumCheck(keyCode)
+      break;
     }
   }
 }
 
 
-//check random number and compare with with keypress if correct increase score 
-//and continue random if not decrease score and random again
+//check random number and compare with with keypress if correct increase score and play hit sfx
+//and continue random if not decrease score play miss sfx and random again
 let rannumCheck = (keyCode) =>{
 
 
@@ -151,19 +163,19 @@ let rannumCheck = (keyCode) =>{
     console.log('stop')
   }
   else{
-    if (rannum == 1 && keyCode === 68){
+    if (rannum == 1 && keyCode === 68 || rannum == 1 && keyCode == 38){//d up
       score += 1
       hitfx.play();
     }
-    else if (rannum == 2 && keyCode === 70){
+    else if (rannum == 2 && keyCode === 70 || rannum == 2 && keyCode == 37){ //f left
       score += 1
       hitfx.play();
     }
-    else if( rannum == 3 && keyCode === 74){
+    else if( rannum == 3 && keyCode === 74 || rannum == 3 && keyCode == 39){//j right
       score +=1
       hitfx.play();
     }
-    else if( rannum == 4 && keyCode === 75){
+    else if( rannum == 4 && keyCode === 75 || rannum == 4 && keyCode == 40){//k down
       score +=1
       hitfx.play();
     }
